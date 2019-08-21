@@ -23,6 +23,8 @@ class CourseTest {
 	 */
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		
+		
 	}
 
 	/**

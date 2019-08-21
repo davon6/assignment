@@ -75,7 +75,7 @@ public class Student  {
 
 	private void setStudentID() {  // generate next valid unique student ID based on format 2018nn where nn is 0 for first student and increments for subsequent students
 		// get next student number available, num for unique ID
-		
+		//TO DO/USE BICLYCLE FUNCTION
 		//create the student ID with the 2019 and if necessary a leading 0, need to convert num to a string object numString
 		
 		this.studentID = ""; // "2019" + numString;
@@ -111,10 +111,11 @@ public class Student  {
 		// tell the course object to add this student to the student list
 		// if all was fine with enrolment in the course,
 		// save the course object in this student's courseEnrolledIn attribute
-
+//ASSIGN COURSE OBJECT OT STUDENTOBJECT
 	}
 
 	public String generateCourseInvoice(){
+		//TO DO ASWELL
 		return "";
 	}
 
