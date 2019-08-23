@@ -70,6 +70,7 @@ public class Student  {
 		this.courseEnrolledIn = null;
 		this.myVehicle = null;
 		this.setStudentID();
+		//NEW COMMENT
 	}
 	
 
