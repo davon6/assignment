@@ -62,7 +62,23 @@ public abstract class Vehicle {
 		            calculate fee as:  last year's fee less discount
 		            update last year's fee to equal fee ready for next iteration through loop
 		 */		
-		return getFee();
+		//return getFee();
+		double regoFeeCurrentYear=0.0, lastYearsFee=0.0, discount;
+		double percentageDiscount = 0.01;
+if (yearNo ==0) // currentYear is first registration  
+regoFeeCurrentYear = getFee();
+else {
+lastYearsFee = getFee(); // first time through, the previous year's fee is the default fee
+for (int i=0;i<=yearNo;i++) {  // loop for the number of years registration has been held
+	percentageDiscount = PERCENTDISCOUNTPERYEAR * i;  // each year, the percentage increases by another 0.01 
+	discount = lastYearsFee * percentageDiscount;  // calculate this year's discount  
+	regoFeeCurrentYear = lastYearsFee - discount;  // apply discount to get this year's fee
+	lastYearsFee = regoFeeCurrentYear; // save this for next time through loop
+   
+}
+}
+return regoFeeCurrentYear;
+
 	}
 	
 	public String getModel() {
