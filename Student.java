@@ -123,6 +123,9 @@ public class Student  {
 		// if all was fine with enrolment in the course,
 		// save the course object in this student's courseEnrolledIn attribute
 //ASSIGN COURSE OBJECT OT STUDENTOBJECT
+		boolean ok = _aCourse.enrolInCourse(this); // make course object add this student to student list
+		if (ok) 
+			this.courseEnrolledIn = _aCourse;// save the object in this student's courseEnrolledIn attribute
 	}
 
 	public String generateCourseInvoice(){
