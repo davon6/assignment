@@ -26,11 +26,11 @@ public class Car extends Vehicle {
 		int num = this.nextRegistrationID++;  // get next available car registration id
 		//create the student ID with the 2019 and if necessary a leading 0, need to convert num to a string object
 		if (num < 10) 
-			numString = "000" + String.valueOf(num);  // add leading 000 if car registration id is 0..9
+			numString = "000" + String.valueOf(num);  // add 000 if id is 0..9
 		else if (num < 100)
-			numString = "00" + String.valueOf(num);   // add leading 00 if car registration id is 10..99
+			numString = "00" + String.valueOf(num);   // add 00 if id is 10..99
 		else if (num < 1000)
-			numString = "0" + String.valueOf(num);    // add leading 0 if car registration id is 100..999
+			numString = "0" + String.valueOf(num);    // add 0 if id is 100..999
 		else 
 			numString = String.valueOf(num); 
 		super.assignRegistrationID("CAR" + numString);
