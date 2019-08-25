@@ -80,7 +80,7 @@ public class Student  {
 		
 		String numString="";
 		int num = this.nextstudentNum++;  // get next student number
-		//create the student ID with the 2018 and if necessary a leading 0, need to convert num to a string object
+		//create the student ID with the 2019 and if necessary a leading 0, need to convert num to a string object
 		if (num < 10) 
 			numString = "0" + String.valueOf(num);  // add leading 0 if student num is 0..9
 		else
