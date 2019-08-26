@@ -11,6 +11,7 @@ public class Car extends Vehicle {
 	// add attribute to store this Car's unique vehicle on-road registration ID
 	
 	private static String[] restrictedVehicleList = {"Truck", "Van"}; // update list of restricted vehicles
+	private static int nextRegistrationID = 0;
 	
 	public Car(String _model, int _age){
 		super(_model, _age);
