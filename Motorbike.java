@@ -21,6 +21,18 @@ public class Motorbike extends Vehicle {
 	
 	private void assignRegistrationID(){
 
+		String numString ="";
+		int num = this.nextRegistrationID++;  // get next available motorbike registration id
+		//create the student ID with the 2019 and if necessary a leading 0, need to convert num to a string object
+		if (num < 10) 
+			numString = "000" + String.valueOf(num);  // add 000 if Motorbike id is 0..9
+		else if (num < 100)
+			numString = "00" + String.valueOf(num);   // add 00 if Motorbike id is 10..99
+		else if (num < 1000)
+			numString = "0" + String.valueOf(num);    // add 0 if Motorbike id is 100..999
+		else 
+			numString = String.valueOf(num); 
+		super.assignRegistrationID("MB" + numString);
 	}
 
 	public double calcRegistrationFee(){
