@@ -7,6 +7,7 @@ public abstract class Vehicle {
 	private String registrationID;
 	private double fee;
 	private boolean valid;
+	private static final double PERCENTDISCOUNTPERYEAR = 0.01;
 	
 	public Vehicle(String _model, int _age) {
 		
@@ -48,7 +49,7 @@ public abstract class Vehicle {
 			valid = false;
 	}
 
-	public double calcRegistrationFee(){  // the public interface to allow other objects to calculate the registration fee (including any discounts)
+	public double calcRegistrationFee(int yearNo){  // the public interface to allow other objects to calculate the registration fee (including any discounts)
 		/* The college will apply a discount of 1% for each year of registration. The discount accumulates and is applied to last year's fee.
 		 * So, if a vehicle has been registered for 3 years in 2018, the fee is calculated with a discount of 3% of the fee for 2017.
 		 *      the fee is 2017 is calculated as a discount of 2% on the fee for 2016 and the fee is 2016 is calculated as 1% discount on the fee in 2015 (init fee)
@@ -65,7 +66,7 @@ public abstract class Vehicle {
 		//return getFee();
 		double regoFeeCurrentYear=0.0, lastYearsFee=0.0, discount;
 		double percentageDiscount = 0.01;
-if (yearNo ==0) // currentYear is first registration  
+if (yearNo ==0) // currentYear is first registration 
 regoFeeCurrentYear = getFee();
 else {
 lastYearsFee = getFee(); // first time through, the previous year's fee is the default fee
