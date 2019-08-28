@@ -151,6 +151,13 @@ public class Student  {
 
 	public String generateRegistrationInvoice() {
 		// TODO complete this method - calculate the fees and create an invoice as a string
+		
+		if (this.hasRegisteredVehicle())//CALL FUNCTION hasRegisteredVehicle()
+			return " Invoice for parking registration :  " + this.getMyVehicle().calcRegistrationFee(this.yearNo);
+		else
+			return " No vehicle registered ";
+		
+		
 		return " Invoice for parking registration : \n currently empty ";
 	}
 
