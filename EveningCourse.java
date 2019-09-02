@@ -2,9 +2,9 @@ package parkingManagementSystem;
 
 
 /**
- * @author kkeogh
+ * @author David mignot
  * @version 1.0
- * @created 21-Sep-2018 4:55:30 PM
+ * @created 19-Aug-2019 
  */
 public class EveningCourse extends Course {
 

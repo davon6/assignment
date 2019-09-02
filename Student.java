@@ -1,9 +1,9 @@
 package parkingManagementSystem;
 
 /**
- * @author kkeogh
+ * @author David mignot
  * @version 1.0
- * @created 21-Sep-2018 4:55:46 PM
+ * @created 20-Aug-2019 
  */
 public class Student  {
 

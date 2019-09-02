@@ -1,7 +1,7 @@
 /**
- * @author kkeogh
+ * @author David mignot
  * @version 1.0
- * @created 21-Apr-2018  
+ * @created 20-Aug-2019 
  */
 package parkingManagementSystem;
 
