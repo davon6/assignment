@@ -1,10 +1,11 @@
 /**
- * @author David mignot
+ * @author kkeogh
  * @version 1.0
- * @created 20-Aug-2019 
+ * @created 21-Apr-2018  
  */
 package parkingManagementSystem;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -15,7 +16,7 @@ public class MenuDriverClass {
 	Scanner console;
 	boolean stillRunning;
 	Student s1, s2, s3; // for prototype version 1, hardcode 3 students who are created by option 1 and not yet enrolled
-	Course c1, c2, c3; // for prototype version 1, use 3 course objects for testing
+	College myCollege = new College();
 	
 	public MenuDriverClass() {
 
@@ -83,10 +84,12 @@ public class MenuDriverClass {
 		// NOTE: This method will invoke a range of other methods to actually achieve the user's choice.
 		public void processChoiceMainMenu(int choice)
 		{
+			String givenFileName;		
 			switch (choice)
 			{
 				case 1:
-					Student newS = createANewStudent(); // menu option 1 create a new student
+				 ArrayList<parkingManagementSystem.Student> arry1 = new ArrayList<>();
+				Student newS = createANewStudent(arry1); // menu option 1 create a new student
 					
 					// save this student in one of s1, s2 or s3 test student objects in this class
 					if (s1==null) s1 = newS;
@@ -120,7 +123,6 @@ public class MenuDriverClass {
 				case 0:
 					this.stillRunning = false;				// causes the main loop of program to end (i.e. quits)
 					break;
-					
 				default:
 					System.out.println("Unexpected selection made. Doing nothing.");
 					break;
@@ -131,15 +133,13 @@ public class MenuDriverClass {
 			
 		private void registerVehicleToStudent() {
 			// register a Vehicle to a particular Student who is enrolled in a course at the college
-			// ask user for vehicle details and create new test vehicle
+			// ask user for vehicle details and create new vehicle object
 			Vehicle a = this.createANewVehicle();
 			// ask which student to register this vehicle to
-			if (c1==null && c2==null && c3==null)
+			if (this.myCollege.getCourseCount() ==0)
 				System.out.println("No Courses set up yet. Students must enrol first");
 			else {
-				if (c1!=null) System.out.println(c1.getAllStudents());
-				if (c2!=null) System.out.println(c2.getAllStudents());
-				if (c3!=null) System.out.println(c3.getAllStudents());
+				this.myCollege.showAllStudents();
 				String studentName = this.getAMultiwordString("Enter student's name : ");
 				if (studentName.contains("\n")) System.out.println("something went wrong ");
 				Student s = this.findStudent(studentName);
@@ -151,27 +151,25 @@ public class MenuDriverClass {
 			}
 		}
 
-		private Vehicle createANewTestVehicle() {
-			// TODO change this to ask user for Vehicle details
-			Vehicle v = new Car("Baojun 560", 3); // hardcode a test vehicle
+		private Vehicle createANewTestVehicle() {  // could be used for testing, eventually put this in unit tests
+			Vehicle v = new Car("Baojun 560", 3, "AQB350"); // hardcode a test vehicle
 			return v;
 		}
 
 		private void saveCourse(Course c) {
-			if (c1==null) 
-				c1=c;
-			else if (c2==null)
-				c2=c;
-			else c3=c; // always save course in c3 if other courses objects c1,c2 are already created
+			if (c!=null) 
+				myCollege.saveCourse(c);
 			
 		}
 
 		private void enrolANewStudentInACourse() {
+			// initially for first prototype, presume that there are 3 test student objects s1,s2,s3.
+			// in next version for assignment 2, we will have an array or arrayList of students
 			Student astudent=null;
 			// select from existing students. Get details of a student 
 			int ans = this.getANumber("Enter 1 to use an existing student, Enter 2 to create a new student");
 			if (ans == 2) // create a new student 
-				astudent = this.createANewStudent();
+				astudent = this.createANewStudent(null);
 			else { 
 			    if (s1!=null) System.out.println("student s1: " + s1.toString());
 			    if (s2!=null) System.out.println("student s2: " + s2.toString());
@@ -211,26 +209,25 @@ public class MenuDriverClass {
 
 		private void runRegressionTests() {
 			// TODO create an object of Test type in order to run all Junit tests
-			// update testCourse so that you run a number of tests
-			// create some test cases to test other classes too
+			// update this to run a number of tests
 			CourseTest myTestObject = new CourseTest();
 			myTestObject.testCourse();
 			
 		}
 
 		private void listAllCourses() {
-			// there are 3 test course objects c1, c2, c3
-			if (c1!=null)
-				System.out.println(c1.toString());
-			if (c2!=null)
-				System.out.println(c2.toString());
-			if (c3!=null)
-				System.out.println(c3.toString());
-			if (c1==null && c2==null && c3==null)
+			Course[] c;
+			if (this.myCollege.getCourseCount() >0) {
+				c = this.myCollege.getAllCourses();
+				for (int index=0; index < this.myCollege.getCourseCount(); index ++)
+					System.out.println(c[index].toString());
+				}
+			else 
 				System.out.println("No Courses offered in college at the moment");
 		}
 		
 		private String getDetailsOfACourse() {
+			if (this.myCollege.getCourseCount() >0) {
 				listAllCourses();
 				// then ask user which course they want details about
 				String cname = this.getAMultiwordString("Enter name of course: ");
@@ -240,10 +237,12 @@ public class MenuDriverClass {
 					return c.toString();
 				else 
 					return " Course "+ cname + " not found";
-						
+			}
+			else return " " ;
+			
 		}
 
-		private Student createANewStudent() {
+		private Student createANewStudent(ArrayList<Student> arry) {
 			// create a new student
 			Student s;
 			String sname, saddress, spostcode, sphoneNo;
@@ -254,7 +253,7 @@ public class MenuDriverClass {
 			sphoneNo = this.getAString("Please enter student phone number (no spaces) : ");
 						
 			s = new Student(sname, saddress, spostcode, sphoneNo);
-			
+			arry.add(s);
 			//debug messsage
 			System.out.println("just created student " + s.toString());
 			return s;
@@ -265,15 +264,12 @@ public class MenuDriverClass {
 		
 		private Student findStudent(String studentName) {
 			
-			 // for each course, get all students: for now, in prototype 1, we have 3 students s1, s2, s3
-				
-				if (s1!=null && s1.getName().equalsIgnoreCase(studentName))  // is this the student we are looking for?
-					return s1;
-				if (s2!=null && s2.getName().equalsIgnoreCase(studentName))  // is this the student we are looking for?
-					return s2;
-				if (s3!=null && s3.getName().equalsIgnoreCase(studentName))  // is this the student we are looking for?
-					return s3;
-				
+			Student[][] allStudentsList = myCollege.getAllStudentsLists(); // get list of all students in each course in 2D array
+			for (int courseNumber=0; courseNumber < this.myCollege.getCourseCount(); courseNumber++)  // for each course
+				for (Student s: allStudentsList[courseNumber]) {  //  in that course, for each student
+					if (s!=null && s.getName().equalsIgnoreCase(studentName))  // is this the student we are looking for?
+						return s;
+				}
 			// if get to here, we didn't find the student
 			System.out.println("Failed to find student " + studentName);
 			return null;
@@ -283,12 +279,11 @@ public class MenuDriverClass {
 		private void enrolAStudentInACourse(Student _aStudent) {
 			// given the student _aStudent
 			// then enrol that student in a known course
-			this.listAllCourses();
-			String cname = this.getAMultiwordString("Please enter Course Name: ");
-			Course aCourse = findACourse(cname);
-			if (aCourse!=null && _aStudent!=null) 
-				_aStudent.enrolInCourse(aCourse);
-			
+			if (myCollege.getCourseCount() >0)  {
+				String cname = this.getAMultiwordString("Please enter Course Name: ");
+				Course aCourse = findACourse(cname);
+				if (aCourse!=null && _aStudent!=null) _aStudent.enrolInCourse(aCourse);
+			}
 			else {  // force user to create a course first to enrol this student into
 				Course c = createNewCourse();
 				saveCourse(c);
@@ -298,14 +293,12 @@ public class MenuDriverClass {
 		}
 
 		private Course findACourse(String cname) {
-			
+			if (myCollege.getCourseCount() >0)  {
 			// find the course that matches cname
-			if (c1!=null && c1.getName().equalsIgnoreCase(cname))  // found a match
-					return c1;
-			if (c2!=null && c2.getName().equalsIgnoreCase(cname))  // found a match
-				return c2;
-			if (c3!=null && c3.getName().equalsIgnoreCase(cname))  // found a match
-				return c3;
+			for (Course c: myCollege.getAllCourses())
+				if (c!=null && c.getName().equalsIgnoreCase(cname))  // found a match
+					return c;
+			}
 			// if not found or course count is 0, return null
 			return null;
 		}
@@ -362,20 +355,13 @@ public class MenuDriverClass {
 			model = this.getAMultiwordString("What model is this "+ vehicleType);
 			aname = this.getAString("Enter "+ vehicleType + " name : ");
 			age = this.getANumber("Enter age of " + aname + " : ");
+			roadRegistrationID = this.getAString("Enter road authority registration ID ");
 			if (vehicleType.equalsIgnoreCase("Car")) {
-				Car c = new Car(model, age);
+				Car c = new Car(model, age, roadRegistrationID);
 				v=c;
 				}
-			else if(vehicleType.equalsIgnoreCase("Bicycle")) {
-				Bicycle b = new Bicycle(age);
-				v = b;
-			}
-			else if(vehicleType.equalsIgnoreCase("Motorbike")) {
-				Motorbike b = new Motorbike(age);
-				v = b;
-			}
 			else 
-				System.out.println("Only possible to create Cars/Bicycles/Motorbikes in this release.");
+				System.out.println("Only possible to create Cars in this release.");
 			
 			return v;
 		}

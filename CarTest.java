@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * @author Kkeogh
  *
  */
-class CourseTest {
+class CarTest {
 
 	/**
 	 * @throws java.lang.Exception
@@ -46,82 +46,82 @@ class CourseTest {
 	}
 
 	/**
-	 * Test method for {@link itech2306Lab4.Course#Course(java.lang.String, int)}.
+	 * Test method for {@link itech2306Assign1PartialSolution.Car#isValid()}.
 	 */
 	@Test
-	final void testCourse() {
+	final void testIsValid() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	/**
-	 * Test method for {@link itech2306Lab4.Course#getMaxDays()}.
+	 * Test method for {@link itech2306Assign1PartialSolution.Car#getFee()}.
 	 */
 	@Test
-	final void testGetMaxDays() {
+	final void testGetFee() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	/**
-	 * Test method for {@link itech2306Lab4.Course#enrolInCourse(itech2306Lab4.Student)}.
+	 * Test method for {@link itech2306Assign1PartialSolution.Car#Car(java.lang.String, int)}.
 	 */
 	@Test
-	final void testEnrolInCourse() {
+	final void testCar() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	/**
-	 * Test method for {@link itech2306Lab4.Course#getClassSize()}.
-	 */
-	@Test
-	final void testGetClassSize() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link itech2306Lab4.Course#getStudentCount()}.
-	 */
-	@Test
-	final void testGetStudentCount() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link itech2306Lab4.Course#getName()}.
-	 */
-	@Test
-	final void testGetName() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link itech2306Lab4.Course#getNumDaysRunning()}.
-	 */
-	@Test
-	final void testGetNumDaysRunning() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link itech2306Lab4.Course#getAllStudents()}.
-	 */
-	@Test
-	final void testGetAllStudents() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link itech2306Lab4.Course#getAllStudentLists()}.
-	 */
-	@Test
-	final void testGetAllStudentLists() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link itech2306Lab4.Course#toString()}.
+	 * Test method for {@link itech2306Assign1PartialSolution.Car#toString()}.
 	 */
 	@Test
 	final void testToString() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link itech2306Assign1PartialSolution.Vehicle#Vehicle(java.lang.String, int)}.
+	 */
+	@Test
+	final void testVehicle() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link itech2306Assign1PartialSolution.Vehicle#checkIsValid()}.
+	 */
+	@Test
+	final void testCheckIsValid() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link itech2306Assign1PartialSolution.Vehicle#setValid(boolean)}.
+	 */
+	@Test
+	final void testSetValid() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link itech2306Assign1PartialSolution.Vehicle#calcRegistrationFee()}.
+	 */
+	@Test
+	final void testCalcRegistrationFee() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link itech2306Assign1PartialSolution.Vehicle#getModel()}.
+	 */
+	@Test
+	final void testGetModel() {
+		fail("Not yet implemented"); // TODO
+	}
+
+	/**
+	 * Test method for {@link itech2306Assign1PartialSolution.Vehicle#getAge()}.
+	 */
+	@Test
+	final void testGetAge() {
 		fail("Not yet implemented"); // TODO
 	}
 

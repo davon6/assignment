@@ -1,9 +1,9 @@
 package parkingManagementSystem;
 
 /**
- * @author David mignot
+ * @author kkeogh
  * @version 1.0
- * @created 20-Aug-2019 
+ * @created 21-Sep-2018 4:55:42 PM
  */
 public class ShortCourse extends Course {
 

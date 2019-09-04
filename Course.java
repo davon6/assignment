@@ -1,9 +1,9 @@
 package parkingManagementSystem;
 
 /**
- * @author David mignot
+ * @author kkeogh
  * @version 1.0
- * @created 29-Aug-2019 
+ * @created 21-Sep-2018 4:55:23 PM
  */
 public class Course {
 
@@ -14,7 +14,7 @@ public class Course {
 	private double price;
 	private String name;
 	private final int MAXDAYS = 10;   // constant - maximum length of course in days
-	private final int MAXNOSTUS = 3; // constant - maximum number of students allowed in a course
+	private final int MAXNOSTUS = College.MAXSTUDENTS; // constant - maximum number of students allowed in a course
 
 	public Course(String _name, int _numDaysRunning){
 		this.setName(_name);
@@ -83,7 +83,7 @@ public class Course {
 	}
 	
 	public Student[] getAllStudentLists() {  // produce a copy of the array of students in the class list
-		Student[] copyStudentList = new Student[MAXNOSTUS];
+		Student[] copyStudentList = new Student[College.MAXSTUDENTS];
 		for (int i=0; i < this.getStudentCount(); i++)  
 			copyStudentList[i] = this.studentList[i];
 		return copyStudentList;
