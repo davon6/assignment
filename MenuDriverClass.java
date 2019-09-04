@@ -132,7 +132,7 @@ public class MenuDriverClass {
 		private void registerVehicleToStudent() {
 			// register a Vehicle to a particular Student who is enrolled in a course at the college
 			// ask user for vehicle details and create new test vehicle
-			Vehicle a = this.createANewTestVehicle();
+			Vehicle a = this.createANewVehicle();
 			// ask which student to register this vehicle to
 			if (c1==null && c2==null && c3==null)
 				System.out.println("No Courses set up yet. Students must enrol first");
@@ -366,8 +366,16 @@ public class MenuDriverClass {
 				Car c = new Car(model, age);
 				v=c;
 				}
+			else if(vehicleType.equalsIgnoreCase("Bicycle")) {
+				Bicycle b = new Bicycle(age);
+				v = b;
+			}
+			else if(vehicleType.equalsIgnoreCase("Motorbike")) {
+				Motorbike b = new Motorbike(age);
+				v = b;
+			}
 			else 
-				System.out.println("Only possible to create Cars in this release.");
+				System.out.println("Only possible to create Cars/Bicycles/Motorbikes in this release.");
 			
 			return v;
 		}
